@@ -1,25 +1,21 @@
-function sameFrequency(int1: number, int2: number): any {
-  const string1: string[] = int1.toString().split('');
-  const string2: string[] = int2.toString().split('');
+function maxSubarraySum(arr: number[], subArr: number) {
+  if (arr.length < subArr) return false;
 
-  if (string1.length !== string2.length) return false;
+  let maxSum = 0;
+  let tempSum = 0;
 
-  //                          index signature
-  const frequencyObject1: { [key: string]: number } = {};
-
-  for (let char of string1) {
-    frequencyObject1[char] = (frequencyObject1[char] || 0) + 1;
+  for (let i = 0; i < subArr; i++) {
+    maxSum += arr[i];
   }
 
-  for (let char of string2) {
-    if (frequencyObject1[char]) {
-      frequencyObject1[char] -= 1;
-    } else {
-      return false;
-    }
+  tempSum = maxSum;
+
+  for (let i = subArr; i < arr.length; i++) {
+    tempSum += arr[i] - arr[i - subArr];
+    maxSum = Math.max(tempSum, maxSum);
   }
 
-  return true;
+  return maxSum;
 }
 
-console.log(sameFrequency(213, 321));
+console.log(maxSubarraySum([1, 4, 2, 10, 23, 3, 1, 0, 20], 4));
