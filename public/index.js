@@ -1,11 +1,21 @@
 "use strict";
-function countUp(num) {
-    if (num > 9) {
-        console.log('I got 10!');
-        return;
+function binarySearch(array, target) {
+    let left = 0;
+    let right = array.length - 1;
+    let middle = Math.floor((array.length - 1) / 2);
+    while (left > right) {
+        if (target > middle) {
+            right = middle;
+        }
+        else {
+            left = middle;
+        }
+        middle = Math.floor((right - left) / 2);
+        if (middle === target)
+            return middle;
     }
-    console.log(`Number is not greater than 10! It's ${num}!`);
-    num++;
-    countUp(num);
+    return target;
 }
-countUp(0);
+const arrTest = [2, 4, 5, 7, 11, 15, 36, 43, 74, 89];
+const targValue = 43;
+console.log(binarySearch(arrTest, targValue));
