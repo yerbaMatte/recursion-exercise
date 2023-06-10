@@ -1,21 +1,27 @@
-function binarySearch(array: number[], target: number): number {
-  let left = 0;
-  let right = array.length - 1;
-  let middle = Math.floor((array.length - 1) / 2);
-  while (left > right) {
-    if (target > middle) {
-      right = middle;
+function binarySearch(arr: number[], elem: number) {
+  //
+  var start = 0;
+  var end = arr.length - 1;
+  var middle = Math.floor((start + end) / 2);
+  console.log(start, middle, end);
+
+  //
+  while (arr[middle] !== elem && start <= end) {
+    if (elem < arr[middle]) {
+      end = middle - 1;
     } else {
-      left = middle;
+      start = middle + 1;
     }
-    middle = Math.floor((right - left) / 2);
-    if (middle === target) return middle;
+    console.log(start, middle, end);
+    middle = Math.floor((start + end) / 2);
   }
-
-  return target;
+  if (arr[middle] === elem) {
+    return middle;
+  }
+  return -1;
 }
-
-const arrTest = [2, 4, 5, 7, 11, 15, 36, 43, 74, 89];
-const targValue = 43;
+//               L           M               R
+const arrTest = [2, 4, 5, 7, 11, 15, 36, 74, 89];
+const targValue = 11;
 
 console.log(binarySearch(arrTest, targValue));
