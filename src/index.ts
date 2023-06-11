@@ -1,1 +1,12 @@
-//Naive substring search
+function countUp(num: number) {
+  if (num > 9) {
+    console.log('I got 10!');
+    return;
+  }
+
+  console.log(`Number is not greater than 10! It's ${num}!`);
+  num++;
+  countUp(num);
+}
+
+countUp(0);
