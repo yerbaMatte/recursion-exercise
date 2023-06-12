@@ -1,2 +1,2 @@
 "use strict";
-//Naive substring search
+//Selection sort
