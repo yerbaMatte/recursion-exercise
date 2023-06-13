@@ -1,2 +1,2 @@
 "use strict";
-//Selection sort
+// Merge Sort

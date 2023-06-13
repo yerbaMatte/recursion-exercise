@@ -1,1 +1,1 @@
-//Selection sort
+// Merge Sort
