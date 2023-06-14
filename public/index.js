@@ -1,34 +1,47 @@
 "use strict";
-<<<<<<< HEAD
-function lengthOfLastWord(s) {
-    let x = s.trim().split(' ').slice(-1)[0].length;
-    console.log(x);
-    return x;
+//BST - BinarySearchTree
+class NodeBST {
+    constructor(value) {
+        this.value = value;
+        this.left = null;
+        this.right = null;
+    }
 }
-lengthOfLastWord('   fly me   to   the moon  ');
-=======
-// Merge Sort
-function mergeSort(arr1, arr2) {
-    let sortedArray = [];
-    let i = 0;
-    let j = 0;
-    while (i < arr1.length && j < arr2.length) {
-        if (arr1[i] < arr2[j]) {
-            sortedArray.push(arr1[i]);
-            i++;
+class BinarySearchTree {
+    constructor() {
+        this.root = null;
+    }
+    insert(value) {
+        const newNode = new NodeBST(value);
+        if (this.root === null) {
+            this.root = newNode;
+            return this;
         }
         else {
-            sortedArray.push(arr2[j]);
-            j++;
+            let current = this.root;
+            while (true) {
+                if (value === current.value)
+                    return undefined;
+                if (value < current.value) {
+                    if (current.left === null) {
+                        current.left = newNode;
+                        return this;
+                    }
+                    else {
+                        current = current.left;
+                    }
+                }
+                else if (value > current.value) {
+                    if (current.right === null) {
+                        current.right = newNode;
+                        return this;
+                    }
+                    else {
+                        current = current.right;
+                    }
+                }
+            }
         }
     }
-    if (i !== arr1.length)
-        sortedArray.push(...arr1.slice(i));
-    if (j !== arr2.length)
-        sortedArray.push(...arr2.slice(j));
-    return sortedArray;
 }
-const arr1 = [1, 4, 6, 11, 50, 90];
-const arr2 = [3, 7, 15, 66, 111, 222, 234, 666];
-console.log(mergeSort(arr1, arr2));
->>>>>>> 86a2f8d76fbcd82886441df3ba7cbbeea229773c
+const tree = new BinarySearchTree();
